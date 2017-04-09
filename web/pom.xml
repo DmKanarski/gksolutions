@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>by.kanarski.gksolutions</groupId>
+	<artifactId>web</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<name>web</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>by.kanarski</groupId>
+		<artifactId>gksolutions</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>2.2.1</thymeleaf-layout-dialect.version>
+		<tomcat.version>8.0.35</tomcat.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>by.kanarski.gksolutions</groupId>
+			<artifactId>dao</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>by.kanarski.gksolutions</groupId>
+			<artifactId>services</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<!--<scope>provided</scope>-->
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Package as an executable jar/war -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>myBuild</id>
+			<activation>
+				<property>
+					<name>myBuild</name>
+				</property>
+			</activation>
+			<build>
+				<finalName>${project.parent.name}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>copy-dependencies</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+									<overWriteIfNewer>true</overWriteIfNewer>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.3</version>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>deploy</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+								<configuration>
+									<server>tomcat8</server>
+									<url>http://localhost:8085/manager/text</url>
+									<path>/${project.build.finalName}</path>
+									<update>true</update>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<port>8082</port>
+							<server>tomcat8</server>
+							<url>http://localhost:8085/manager/text</url>
+							<path>/${project.build.finalName}</path>
+							<update>true</update>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
+</project>

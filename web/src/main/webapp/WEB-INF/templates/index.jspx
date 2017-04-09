@@ -1,0 +1,29 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:sf="http://www.springframework.org/tags/form">
+    <div id="registrationBlock" class="lightbox">
+        <div class="lb-wrap">
+            <div class="lb-content">
+                <sf:form id="registrationForm" name="registrationForm" method="POST" action="users" modelAttribute="user">
+                    <h1><spring:message text="Регистрация"/></h1>
+                    <label for="r_first_name">Имя</label>
+                    <input type="text" id="r_first_name" name="user.firstName"/>
+                    <label for="r_middle_name">Отчество</label>
+                    <input type="text" id="r_middle_name" name="user.middleName"/>
+                    <label for="r_last_name">Фамилия</label>
+                    <input type="text" id="r_last_name" name="user.lastName"/>
+                    <label for="r_email">E-mail</label>
+                    <input type="email" id="r_email" name="user.email"/>
+                    <label for="r_password">Пароль</label>
+                    <input type="password" id="r_password" name="user.password"/>
+                    <label for="r_skype">Скайп</label>
+                    <input type="text" id="r_skype" name="user.skype"/>
+                    <label for="r_mobile_phone">Моб. телефон</label>
+                    <input type="text" id="r_mobile_phone" name="user.phoneSet.phoneNumber"/>
+                    <input type="submit" value="Зарегистрироваться"/>
+                </sf:form>
+            </div>
+        </div>
+    </div>
+</jsp:root>
