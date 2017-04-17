@@ -1,5 +1,6 @@
 package by.kanarski.gksolutions.dto;
 
+import by.kanarski.gksolutions.dto.user.UserDto;
 import lombok.Builder;
 import lombok.Data;
 

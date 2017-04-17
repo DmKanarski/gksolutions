@@ -1,7 +1,7 @@
 package by.kanarski.gksolutions.listeners.request;
 
 import by.kanarski.gksolutions.constants.Parameter;
-import by.kanarski.gksolutions.dto.UserDto;
+import by.kanarski.gksolutions.dto.user.UserDto;
 import by.kanarski.gksolutions.utils.threadLocal.ThreadLocalUtil;
 
 import javax.servlet.ServletRequestEvent;

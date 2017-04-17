@@ -18,7 +18,7 @@ import java.util.Set;
 @AttributeOverride(name = "id", column = @Column(name = "user_id"))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class User extends AbstactEntity {
+public class User extends AbstractEntity {
 
     private static final long serialVersionUID = 755092399090937570L;
 

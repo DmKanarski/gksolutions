@@ -5,7 +5,7 @@ package by.kanarski.gksolutions.entities;
  * @version 1.0
  */
 
-public class PhoneNumber extends AbstactEntity {
+public class PhoneNumber extends AbstractEntity {
 
     // TODO: 19.03.2017 Must hawe own table!!!
     private String phoneType;

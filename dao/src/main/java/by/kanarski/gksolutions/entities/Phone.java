@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AttributeOverride(name = "id", column = @Column(name = "phone_id"))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class Phone extends AbstactEntity {
+public class Phone extends AbstractEntity {
 
     private static final long serialVersionUID = 3481339942436327182L;
     private String phoneNumber;

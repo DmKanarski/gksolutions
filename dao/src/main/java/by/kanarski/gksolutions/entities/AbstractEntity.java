@@ -1,5 +1,7 @@
 package by.kanarski.gksolutions.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,7 +14,9 @@ import java.io.Serializable;
  */
 
 @MappedSuperclass
-abstract class AbstactEntity implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 5677570538293781869L;
 
@@ -44,7 +48,7 @@ abstract class AbstactEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AbstactEntity that = (AbstactEntity) o;
+        AbstractEntity that = (AbstractEntity) o;
 
         return id.equals(that.id);
     }

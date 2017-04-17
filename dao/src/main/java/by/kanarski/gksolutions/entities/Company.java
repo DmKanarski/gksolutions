@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 @AttributeOverride(name = "id", column = @Column(name = "company_id"))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class Company extends AbstactEntity {
+public class Company extends AbstractEntity {
 
     private String companyName;
 

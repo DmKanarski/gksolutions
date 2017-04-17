@@ -17,7 +17,7 @@ import javax.persistence.Entity;
 @AttributeOverride(name = "id", column = @Column(name = "phone_type_id"))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class PhoneType extends AbstactEntity {
+public class PhoneType extends AbstractEntity {
 
     private String phoneTypeName;
 

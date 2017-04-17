@@ -1,6 +1,8 @@
-package by.kanarski.gksolutions.dto;
+package by.kanarski.gksolutions.dto.user;
 
 import by.kanarski.gksolutions.constants.StateValue;
+import by.kanarski.gksolutions.dto.CompanyDto;
+import by.kanarski.gksolutions.dto.PhoneDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

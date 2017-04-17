@@ -87,10 +87,6 @@ public abstract class ExtendedBaseDao<T> extends BaseDao<T> implements IExtended
         }
     }
 
-    protected Criteria getOwnCriteria() {
-        return getSession().createCriteria(getEntityClass());
-    }
-
     private void checkBatch(Session session, int batchSize) {
         if ((batchSize + 1) % BATCH_SIZE == 0) {
             session.flush();

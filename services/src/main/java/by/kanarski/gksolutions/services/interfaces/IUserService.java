@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.services.interfaces;
 
-import by.kanarski.gksolutions.dto.UserDto;
+import by.kanarski.gksolutions.dto.user.UserDto;
 import by.kanarski.gksolutions.entities.User;
 
 /**

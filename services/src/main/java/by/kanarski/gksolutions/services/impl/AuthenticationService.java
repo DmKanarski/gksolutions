@@ -1,6 +1,6 @@
 package by.kanarski.gksolutions.services.impl;
 
-import by.kanarski.gksolutions.dto.UserDto;
+import by.kanarski.gksolutions.dto.user.UserDto;
 import by.kanarski.gksolutions.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;

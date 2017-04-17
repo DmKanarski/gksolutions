@@ -17,7 +17,7 @@ import javax.persistence.Entity;
 @AttributeOverride(name = "id", column = @Column(name = "role_id"))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class Role extends AbstactEntity{
+public class Role extends AbstractEntity {
 
     private static final long serialVersionUID = 2321941631442869449L;
     private String stateName;

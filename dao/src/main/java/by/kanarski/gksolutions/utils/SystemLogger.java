@@ -1,6 +1,8 @@
 package by.kanarski.gksolutions.utils;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SystemLogger {
 
@@ -24,43 +26,43 @@ public class SystemLogger {
     }
 
     public void logError(Class sender, String message, Throwable error) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.error(message, error);
     }
 
     public void logError(Class sender, String message) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.error(message);
     }
 
     public void logError(Class sender, Throwable error) {
-        logger = Logger.getLogger(sender);
-        logger.error(error);
+        logger = LoggerFactory.getLogger(sender);
+        logger.error(error.getMessage(), error);
     }
 
 
     public void logError(String message, Throwable error) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.error(message, error);
     }
 
     public void logError(Throwable error) {
-        logger = Logger.getLogger(sender);
-        logger.error(error);
+        logger = LoggerFactory.getLogger(sender);
+        logger.error(error.getMessage(), error);
     }
 
     public void logError(String message) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.error(message);
     }
 
     public void logInfo(Class sender, String message) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.info(message);
     }
 
     public void logInfo(String message) {
-        logger = Logger.getLogger(sender);
+        logger = LoggerFactory.getLogger(sender);
         logger.info(message);
     }
 

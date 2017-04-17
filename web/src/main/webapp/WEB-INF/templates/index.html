@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:with="context = ${#request.getContextPath()}">
     <meta charset="UTF-8" content="text/html"/>
+    <meta th:name="${_csrf.getHeaderName()}" th:content="${_csrf.token}"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-mocks.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script type="text/javascript" th:src="${context + '/assets/js/angular/index.module.js'}"
+            src="../../assets/js/angular/index.module.js"></script>
+    <script type="text/javascript" th:src="${context + '/assets/js/angular/register.service.js'}"
+            src="../../assets/js/angular/register.service.js"></script>
+    <script type="text/javascript" th:src="${context + '/assets/js/angular/register.controller.js'}"
+            src="../../assets/js/angular/register.controller.js"></script>
     <title>welcome</title>
 </head>
-<body>
+<body ng-app="indexModule">
 <div id="registrationBlock" class="lightbox">
     <div class="lb-wrap">
         <div class="lb-content">
-            <form id="registrationForm" name="registrationForm" method="POST" action="users">
+            <form ng-controller="registerController as rc" id="registrationForm" name="registrationForm" method="POST">
                 <h1>msg</h1>
                 <div th:text="hello"></div>
                 <label for="r_first_name">Имя</label>
-                <input type="text" id="r_first_name" name="user.firstName"/>
+                <input type="text" id="r_first_name" name="firstName"
+                       placeholder="Дмитрий" ng-model="rc.user.firstName"/>
                 <label for="r_middle_name">Отчество</label>
-                <input type="text" id="r_middle_name" name="user.middleName"/>
+                <input type="text" id="r_middle_name" name="middleName"
+                       placeholder="Юрьевич" ng-model="rc.user.middleName"/>
                 <label for="r_last_name">Фамилия</label>
-                <input type="text" id="r_last_name" name="user.lastName"/>
+                <input type="text" id="r_last_name" name="lastName"
+                       placeholder="Канарский" ng-model="rc.user.lastName"/>
                 <label for="r_email">E-mail</label>
-                <input type="email" id="r_email" name="user.email"/>
+                <input type="email" id="r_email" name="email"
+                       placeholder="belython@gmail.com" ng-model="rc.user.email"/>
                 <label for="r_password">Пароль</label>
-                <input type="password" id="r_password" name="user.password"/>
+                <input type="password" id="r_password" name="password"
+                       placeholder="password" ng-model="rc.user.password"/>
                 <label for="r_skype">Скайп</label>
-                <input type="text" id="r_skype" name="user.skype"/>
+                <input type="text" id="r_skype" name="skype"
+                       placeholder="skyper" ng-model="rc.user.skype"/>
                 <label for="r_mobile_phone">Моб. телефон</label>
-                <input type="text" id="r_mobile_phone" name="user.phoneSet.phoneNumber"/>
-                <input type="submit" value="Зарегистрироваться"/>
+                <input type="text" id="r_mobile_phone" name="rc.user.phoneNumber"
+                       placeholder="123-45-67" ng-model="rc.user.phoneNumber"/>
+                <input type="button" ng-click="rc.registerate()" value="Зарег" />
             </form>
         </div>
     </div>
