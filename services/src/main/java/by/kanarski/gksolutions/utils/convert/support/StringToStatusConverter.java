@@ -4,14 +4,15 @@ import by.kanarski.gksolutions.dao.interfaces.IStatusDao;
 import by.kanarski.gksolutions.entities.Status;
 import by.kanarski.gksolutions.utils.criteria.Restrictions;
 import by.kanarski.gksolutions.utils.criteria.SearchFilter;
-import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Dzmitry Kanarski
  * @version 1.0
  */
 
-public class StringToStatusConverter extends EntityConverter implements Converter<String, Status> {
+@Component
+public class StringToStatusConverter extends EntityConverter<String, Status> {
 
     @Override
     public Status convert(String source) {

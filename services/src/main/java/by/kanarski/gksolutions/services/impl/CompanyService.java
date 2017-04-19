@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class CompanyService extends ExtendedBaseService<Company, CompanyDto> implements ICompanyService {
+public class CompanyService extends BaseService<Company, CompanyDto> implements ICompanyService {
 
     @Autowired
     private ICompanyDao companyDao;

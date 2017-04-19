@@ -8,7 +8,7 @@ import by.kanarski.gksolutions.entities.User;
  * @author Dzmitry Kanarski
  * @version 1.0
  */
-public interface IUserService extends IExtendedBaseService<User, UserDto> {
+public interface IUserService extends IBaseService<User, UserDto> {
 
     /**
      * Recives user DTO with status active by email

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
-public class UserService extends ExtendedBaseService<User, UserDto> implements IUserService {
+public class UserService extends BaseService<User, UserDto> implements IUserService {
 
     @Autowired
     private IUserDao userDao;
@@ -33,7 +33,7 @@ public class UserService extends ExtendedBaseService<User, UserDto> implements I
         phoneService.addAllOf(userDto.getPhoneSet());
         userDto.getRoleSet().add(StateValue.ROLE_USER);
         userDto.setUserStatus(StateValue.STATUS_ACTIVE);
-        User user = conversionService.convert(userDto, User.class);
+        User user = modelMapper.map(userDto, User.class);
         userDao.add(user);
     }
 
@@ -48,7 +48,7 @@ public class UserService extends ExtendedBaseService<User, UserDto> implements I
         SearchFilter searchFilter = new SearchFilter()
                 .addRestriction(Restrictions.eq(User.Fields.email.name(), email));
         User user = userDao.getUniqueByFilter(searchFilter);
-        return conversionService.convert(user, UserDto.class);
+        return modelMapper.map(user, UserDto.class);
     }
 
     /**

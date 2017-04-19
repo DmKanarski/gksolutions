@@ -8,7 +8,7 @@ import java.util.Collection;
  * @author Dzmitry Kanarski
  * @version 1.0
  */
-public interface IExtendedBaseService<E, D> {
+public interface IBaseService<E, D> {
     
     /**
      * Appends entity in the database

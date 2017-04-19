@@ -8,5 +8,5 @@ import by.kanarski.gksolutions.entities.Phone;
  * @version 1.0
  */
 
-public interface IPhoneService extends IExtendedBaseService<Phone, PhoneDto> {
+public interface IPhoneService extends IBaseService<Phone, PhoneDto> {
 }

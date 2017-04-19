@@ -20,7 +20,7 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="org" level="error">
+        <Logger name="org" level="debug">
             <AppenderRef ref="App-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Logger>

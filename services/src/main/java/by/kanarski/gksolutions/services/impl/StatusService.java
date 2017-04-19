@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
-public class StatusService extends ExtendedBaseService<Status, StatusDto> implements IStatusService {
+public class StatusService extends BaseService<Status, StatusDto> implements IStatusService {
 
     @Autowired
     private IStatusDao statusDao;

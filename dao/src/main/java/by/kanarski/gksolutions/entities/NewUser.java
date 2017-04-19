@@ -1,6 +1,7 @@
 package by.kanarski.gksolutions.entities;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import javax.persistence.Entity;
 
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "user_id"))
+@Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class NewUser extends AbstractEntity {
@@ -43,35 +45,43 @@ public class NewUser extends AbstractEntity {
         this.phone = phone;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    @Column
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    @Column
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    @Column
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Column
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Column
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordConfirmation(String passwordConfirmation) {
-        this.passwordConfirmation = passwordConfirmation;
+    @Column
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
     }
 
-    public void setSkype(String skype) {
-        this.skype = skype;
+    @Column
+    public String getSkype() {
+        return skype;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    @Column
+    public String getPhone() {
+        return phone;
     }
 }

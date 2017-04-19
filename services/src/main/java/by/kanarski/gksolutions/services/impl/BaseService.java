@@ -1,9 +1,8 @@
 package by.kanarski.gksolutions.services.impl;
 
 import by.kanarski.gksolutions.dao.interfaces.IExtendedBaseDao;
-import by.kanarski.gksolutions.services.interfaces.IExtendedBaseService;
-import by.kanarski.gksolutions.utils.convert.service.IEntityConversionService;
-import org.modelmapper.ModelMapper;
+import by.kanarski.gksolutions.services.interfaces.IBaseService;
+import by.kanarski.gksolutions.utils.convert.service.ModelMapperWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -23,35 +22,32 @@ import java.util.Set;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
-public abstract class ExtendedBaseService<E, D> implements IExtendedBaseService<E, D> {
+public abstract class BaseService<E, D> implements IBaseService<E, D> {
     
     @Autowired
-    protected IEntityConversionService conversionService;
-
-    @Autowired
-    protected ModelMapper modelMapper;
+    protected ModelMapperWrapper modelMapper;
 
     @Override
     public void add(D dto) {
-        E entity = conversionService.convert(dto, getEntityClass());
+        E entity = modelMapper.map(dto, getEntityClass());
         getDao().add(entity);
     }
 
     @Override
     public D getById(Long id) {
         E entity = getDao().getById(id);
-        return conversionService.convert(entity, getDtoClass());
+        return modelMapper.map(entity, getDtoClass());
     }
 
     @Override
     public void update(D dto) {
-        E entity = conversionService.convert(dto, getEntityClass());
+        E entity = modelMapper.map(dto, getEntityClass());
         getDao().update(entity);
     }
 
     @Override
     public void delete(D dto) {
-        E entity = conversionService.convert(dto, getEntityClass());
+        E entity = modelMapper.map(dto, getEntityClass());
         getDao().delete(entity);
     }
 
@@ -88,10 +84,11 @@ public abstract class ExtendedBaseService<E, D> implements IExtendedBaseService<
     private List<E> convertToEntityList(Collection<D> dtoCollection) {
         List<E> entityList = null;
         if (dtoCollection instanceof Set) {
-            entityList = conversionService.convertSetToList((Set<D>) dtoCollection, getEntityClass());
+
+            entityList = modelMapper.convertSetToList((Set<D>) dtoCollection, getEntityClass());
         }
         if (dtoCollection instanceof List) {
-            entityList = conversionService.convert((List<D>) dtoCollection, getEntityClass());
+            entityList = modelMapper.map((List<D>) dtoCollection, getEntityClass());
         }
         return entityList;
     }

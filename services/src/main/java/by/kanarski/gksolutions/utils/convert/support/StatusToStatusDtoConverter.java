@@ -2,14 +2,15 @@ package by.kanarski.gksolutions.utils.convert.support;
 
 import by.kanarski.gksolutions.dto.StatusDto;
 import by.kanarski.gksolutions.entities.Status;
-import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Dzmitry Kanarski
  * @version 1.0
  */
 
-public class StatusToStatusDtoConverter extends EntityConverter implements Converter<Status, StatusDto> {
+@Component
+public class StatusToStatusDtoConverter extends EntityConverter<Status, StatusDto> {
 
     @Override
     public StatusDto convert(Status status) {

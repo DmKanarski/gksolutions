@@ -8,5 +8,5 @@ import by.kanarski.gksolutions.entities.Company;
  * @version 1.0
  */
 
-public interface ICompanyService extends IExtendedBaseService<Company, CompanyDto> {
+public interface ICompanyService extends IBaseService<Company, CompanyDto> {
 }

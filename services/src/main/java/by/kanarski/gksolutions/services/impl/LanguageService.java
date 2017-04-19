@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
-public class LanguageService extends ExtendedBaseService<Language, String> implements ILanguageService {
+public class LanguageService extends BaseService<Language, String> implements ILanguageService {
 
     @Autowired
     private ILanguageDao languageDao;

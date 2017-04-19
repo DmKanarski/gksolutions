@@ -1,24 +1,24 @@
 package by.kanarski.gksolutions.utils.convert.support;
 
-import by.kanarski.gksolutions.utils.SystemLanguagesManager;
-import by.kanarski.gksolutions.utils.convert.service.IEntityConversionService;
+import by.kanarski.gksolutions.utils.convert.service.ModelMapperWrapper;
+import org.modelmapper.AbstractConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Dzmitry Kanarski
  * @version 1.0
  */
 
-public class EntityConverter {
+@Component
+public abstract class EntityConverter<S, D> extends AbstractConverter<S, D> {
 
-    @Autowired
-    protected SystemLanguagesManager systemLanguagesManager;
     @Autowired
     protected ApplicationContext applicationContext;
 
-    protected IEntityConversionService getConversionService() {
-        return applicationContext.getBean(IEntityConversionService.class);
+    protected ModelMapperWrapper getMapper() {
+        return applicationContext.getBean(ModelMapperWrapper.class);
     }
 
 

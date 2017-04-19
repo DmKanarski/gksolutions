@@ -2,8 +2,8 @@ package by.kanarski.gksolutions.controllers;
 
 import by.kanarski.gksolutions.constants.Pages;
 import by.kanarski.gksolutions.constants.Parameter;
-import by.kanarski.gksolutions.dto.user.UserDto;
-import by.kanarski.gksolutions.services.interfaces.IUserService;
+import by.kanarski.gksolutions.dto.user.NewUserDto;
+import by.kanarski.gksolutions.services.interfaces.INewUserService;
 import by.kanarski.gksolutions.utils.SystemLogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class UserController {
     private static final SystemLogger LOGGER = SystemLogger.getInstance().setSender(UserController.class);
 
     @Autowired
-    private IUserService userService;
+    private INewUserService newUserService;
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -42,22 +42,21 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> registerUser(@RequestBody UserDto userDto, BindingResult bindingResult, Model model) {
+    public ResponseEntity<?> registerUser(@RequestBody NewUserDto newUserDto, BindingResult bindingResult, Model model) {
         HttpHeaders headers = new HttpHeaders();
-
         if (bindingResult.hasErrors()) {
             List<FieldError> errorList = bindingResult.getFieldErrors();
             model.addAttribute(Parameter.REGISTRATION_MESSAGE, "empty fields");
             headers.add("Response-Status", "validation error");
             return new ResponseEntity<>(errorList, headers, HttpStatus.OK);
         }
-        userService.registerUser(userDto);
+        newUserService.add(newUserDto);
         return new ResponseEntity<>("Succesful created", HttpStatus.CREATED);
     }
 
     @ExceptionHandler(Exception.class)
     public String handleException(HttpServletRequest request, Exception exception) {
-        LOGGER.logError("ERROR");
+        LOGGER.logError(exception);
         return Pages.PAGE_ERROR;
     }
 

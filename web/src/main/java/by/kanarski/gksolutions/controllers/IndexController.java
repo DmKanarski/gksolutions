@@ -38,13 +38,7 @@ public class IndexController {
     public ModelAndView toMainPage(ModelAndView modelAndView, HttpServletRequest request) {
         modelAndView.addObject(Parameter.USER, new UserDto());
         modelAndView.setViewName(Pages.PAGE_INDEX);
-        systemLogger.logInfo("WOW!!!!!");
         Logger logger = LoggerFactory.getLogger(getClass());
-        logger.info("INFO");
-        logger.error("ERROR");
-        logger.debug("DEBUG");
-        logger.trace("TRACE");
-        logger.warn("WARN");
         return modelAndView;
     }
 

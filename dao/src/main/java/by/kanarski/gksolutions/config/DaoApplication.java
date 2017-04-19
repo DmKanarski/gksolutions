@@ -1,8 +1,8 @@
 package by.kanarski.gksolutions.config;
 
+import by.kanarski.gksolutions.utils.CustomNamingStrategy;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.*;
@@ -40,12 +40,13 @@ public class DaoApplication {
     }
 
     @Bean
-    public SessionFactory sessionFactory() throws PropertyVetoException {
+    public LocalSessionFactoryBean sessionFactory() throws PropertyVetoException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-//        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
+        sessionFactoryBean.setNamingStrategy(new CustomNamingStrategy());
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
-        return sessionFactoryBean.getObject();
+        sessionFactoryBean.setPackagesToScan("by.kanarski.gksolutions.entities");
+        return sessionFactoryBean;
     }
 
     @Bean
@@ -66,7 +67,7 @@ public class DaoApplication {
                 setProperty("hibernate.hikari.maximumPoolSize", "20");
                 setProperty("hibernate.hikari.connectionTimeout", "30000");
                 setProperty("hibernate.hikari.idleTimeout", "60000");
-                setProperty("hibernate.hbm2ddl.auto", "validate");
+                setProperty("hibernate.hbm2ddl.auto", "create");
             }
         };
     }

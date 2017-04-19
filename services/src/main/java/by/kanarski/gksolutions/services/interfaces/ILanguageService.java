@@ -7,6 +7,6 @@ import by.kanarski.gksolutions.entities.Language;
  * @author Dzmitry Kanarski
  * @version 1.0
  */
-public interface ILanguageService extends IExtendedBaseService<Language, String> {
+public interface ILanguageService extends IBaseService<Language, String> {
 
 }

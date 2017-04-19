@@ -1,14 +1,15 @@
 package by.kanarski.gksolutions.utils.convert.support;
 
 import by.kanarski.gksolutions.entities.Status;
-import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Dzmitry Kanarski
  * @version 1.0
  */
 
-public class StatusToStringConverter extends EntityConverter implements Converter<Status, String> {
+@Component
+public class StatusToStringConverter extends EntityConverter<Status, String> {
 
     /**
      * Convert the source object of type {@code S} to target type {@code T}.
