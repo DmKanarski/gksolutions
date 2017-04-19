@@ -40,7 +40,7 @@ public class User extends AbstractEntity {
     public User(Integer userId, String password, String firstName, String middleName, String lastName, String email,
                 String skype, Set<Phone> phoneSet, Company company, Set<User> childUsersSet, User parentUser,
                 Timestamp createTime, Set<Role> roleSet, Status userStatus) {
-        setId(userId);
+        super(userId);
         this.password = password;
         this.firstName = firstName;
         this.middleName = middleName;
