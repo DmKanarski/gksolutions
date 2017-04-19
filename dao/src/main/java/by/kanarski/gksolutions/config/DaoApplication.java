@@ -35,7 +35,7 @@ public class DaoApplication {
         config.setDriverClassName("com.mysql.jdbc.Driver");
         config.setJdbcUrl("jdbc:mysql://localhost/gksolutions?autoReconnect=true&useSSL=false");
         config.setUsername("root");
-        config.setPassword("17021993");
+        config.setPassword("1234");
         return new HikariDataSource(config);
     }
 
